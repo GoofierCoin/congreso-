@@ -1,0 +1,326 @@
+/* =============================================
+   ESTILOS GENERALES
+   ============================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+    color: #333;
+}
+
+/* =============================================
+   NAVBAR - barra de navegación superior
+   ============================================= */
+.navbar {
+    background-color: #004080;
+}
+
+.navbar ul {
+    display: flex;           /* Flexbox para alinear los links en fila */
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    flex-wrap: wrap;         /* En pantallas pequeñas los links bajan de línea */
+}
+
+.navbar ul li {
+    margin: 0 12px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   BANNER - sección principal de bienvenida
+   ============================================= */
+.banner {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(to right, #0073e6, #00bfff);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+/* Botón del banner */
+.btn-banner {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: white;
+    color: #004080;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-banner:hover {
+    background: #e0f0ff;
+}
+
+/* =============================================
+   SECCIÓN INFO - texto general
+   ============================================= */
+.info {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* =============================================
+   FILTROS - selectores de programa/memoria
+   ============================================= */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.filtros select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+/* =============================================
+   AGENDA - grid de tarjetas de eventos/ponencias
+   ============================================= */
+.agenda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Responsivo automático */
+    gap: 20px;
+    padding: 20px;
+}
+
+.evento {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    transition: transform 0.2s;
+}
+
+.evento:hover {
+    transform: translateY(-3px);
+}
+
+.evento h3 {
+    color: #004080;
+    margin-top: 0;
+}
+
+/* =============================================
+   REPOSITORIO - tarjetas de PDFs (memoria)
+   ============================================= */
+.repositorio {
+    display: flex;
+    flex-wrap: wrap;   /* Los elementos bajan de línea si no caben */
+    gap: 20px;
+    padding: 20px;
+}
+
+.pdf-card {
+    flex: 1 1 260px;   /* Mínimo 260px, crece si hay espacio */
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+
+.pdf-card h3 {
+    color: #004080;
+    margin-top: 0;
+}
+
+/* =============================================
+   FORMULARIO DE LOGIN Y REGISTRO
+   ============================================= */
+.formulario {
+    max-width: 480px;
+    margin: 50px auto;
+    background: white;
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-container h1 {
+    color: #004080;
+    font-size: 1.6em;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 0.95em;
+}
+
+.formulario h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Grupo de campo: label + input */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+/* Botón principal de login/registro */
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #0073e6, #00bfff);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s;
+}
+
+.btn-login:hover {
+    opacity: 0.9;
+}
+
+/* Botón genérico reutilizable */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #005bb5;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.register-link a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.footer-info {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* Mensaje de error en formularios */
+.error-msg {
+    background: #ffe0e0;
+    color: #c00;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #004080;
+    color: white;
+    margin-top: 40px;
+}
+
+/* =============================================
+   RESPONSIVIDAD - pantallas pequeñas
+   ============================================= */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario {
+        margin: 20px;
+        padding: 25px 20px;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+}

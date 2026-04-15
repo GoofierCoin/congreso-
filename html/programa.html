@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa - Congreso Internacional</title>
+    <link rel="stylesheet" href="../css/Style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="programa.html" class="active">Programa</a></li>
+                <li><a href="../php/ponencias.php">Ponencias</a></li>
+                <li><a href="../php/memoria.php">Memoria</a></li>
+                <li><a href="../php/registro.php">Registro</a></li>
+                <li><a href="pagos.html">Pagos</a></li>
+                <li><a href="../php/login.php">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner" style="padding:30px;">
+        <h1>Programa del Congreso</h1>
+        <p>20 - 22 de Junio 2026 | Torreón, Coahuila</p>
+    </section>
+
+    <!-- Filtros por día, tipo y sala -->
+    <div class="filtros">
+        <label>Día:</label>
+        <select id="filtroDia" onchange="filtrar()">
+            <option value="">Todos</option>
+            <option value="20 Junio">20 Junio</option>
+            <option value="21 Junio">21 Junio</option>
+            <option value="22 Junio">22 Junio</option>
+        </select>
+
+        <label>Tipo:</label>
+        <select id="filtroTipo" onchange="filtrar()">
+            <option value="">Todos</option>
+            <option value="Conferencia">Conferencia</option>
+            <option value="Taller">Taller</option>
+            <option value="Panel">Panel</option>
+        </select>
+
+        <label>Sala:</label>
+        <select id="filtroSala" onchange="filtrar()">
+            <option value="">Todas</option>
+            <option value="Sala A">Sala A</option>
+            <option value="Sala B">Sala B</option>
+        </select>
+    </div>
+
+    <!-- Agenda de eventos -->
+    <div class="agenda" id="agenda">
+        <div class="evento" data-dia="20 Junio" data-tipo="Conferencia" data-sala="Sala A">
+            <h3>Conferencia Inaugural</h3>
+            <p>20 Junio | 10:00 AM | Sala A | Conferencia</p>
+        </div>
+        <div class="evento" data-dia="20 Junio" data-tipo="Taller" data-sala="Sala B">
+            <h3>Taller de Innovación Tecnológica</h3>
+            <p>20 Junio | 12:00 PM | Sala B | Taller</p>
+        </div>
+        <div class="evento" data-dia="21 Junio" data-tipo="Panel" data-sala="Sala A">
+            <h3>Panel de Medio Ambiente</h3>
+            <p>21 Junio | 11:00 AM | Sala A | Panel</p>
+        </div>
+        <div class="evento" data-dia="21 Junio" data-tipo="Conferencia" data-sala="Sala B">
+            <h3>Conferencia: Educación del Futuro</h3>
+            <p>21 Junio | 3:00 PM | Sala B | Conferencia</p>
+        </div>
+        <div class="evento" data-dia="22 Junio" data-tipo="Taller" data-sala="Sala A">
+            <h3>Taller de Investigación Aplicada</h3>
+            <p>22 Junio | 10:00 AM | Sala A | Taller</p>
+        </div>
+        <div class="evento" data-dia="22 Junio" data-tipo="Conferencia" data-sala="Sala B">
+            <h3>Conferencia de Clausura</h3>
+            <p>22 Junio | 4:00 PM | Sala B | Conferencia</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Congreso Internacional</p>
+    </footer>
+
+    <script>
+        // Filtra los eventos según los selectores de día, tipo y sala
+        function filtrar() {
+            var dia  = document.getElementById("filtroDia").value;
+            var tipo = document.getElementById("filtroTipo").value;
+            var sala = document.getElementById("filtroSala").value;
+
+            var eventos = document.querySelectorAll(".evento");
+            eventos.forEach(function(ev) {
+                var mostrar = true;
+                if (dia  && ev.dataset.dia  !== dia)  mostrar = false;
+                if (tipo && ev.dataset.tipo !== tipo) mostrar = false;
+                if (sala && ev.dataset.sala !== sala) mostrar = false;
+                ev.style.display = mostrar ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+</html>

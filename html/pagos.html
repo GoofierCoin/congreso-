@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos - Congreso Internacional</title>
+    <link rel="stylesheet" href="../css/Style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="programa.html">Programa</a></li>
+                <li><a href="../php/ponencias.php">Ponencias</a></li>
+                <li><a href="../php/memoria.php">Memoria</a></li>
+                <li><a href="../php/registro.php">Registro</a></li>
+                <li><a href="pagos.html" class="active">Pagos</a></li>
+                <li><a href="../php/login.php">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner" style="padding:30px;">
+        <h1>Pagos e Inscripciones</h1>
+    </section>
+
+    <!-- Tarjetas de precios -->
+    <div class="agenda">
+        <div class="evento">
+            <h3>Participante</h3>
+            <p>Asistencia presencial o virtual al congreso.</p>
+            <p style="font-size:1.4em; font-weight:bold; color:#004080;">$500 MXN</p>
+            <img src="../img/paypal.png" alt="Pago con PayPal (simulado)" style="width:150px; display:block; margin:10px 0;">
+            <!-- El pago real se procesa desde el panel del usuario logueado -->
+            <a href="../php/login.php" class="btn-primary">Pagar (requiere login)</a>
+        </div>
+        <div class="evento">
+            <h3>Ponente</h3>
+            <p>Presentación de ponencia o memoria en el congreso.</p>
+            <p style="font-size:1.4em; font-weight:bold; color:#004080;">$800 MXN</p>
+            <img src="../img/paypal.png" alt="Pago con PayPal (simulado)" style="width:150px; display:block; margin:10px 0;">
+            <a href="../php/login.php" class="btn-primary">Pagar (requiere login)</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Congreso Internacional</p>
+    </footer>
+</body>
+</html>

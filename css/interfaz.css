@@ -1,0 +1,173 @@
+/* =============================================
+   INTERFAZ DE USUARIO (panel del usuario logueado)
+   ============================================= */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f7fa;
+}
+
+/* Layout principal: sidebar fijo + contenido */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =============================================
+   SIDEBAR - barra lateral de navegación
+   ============================================= */
+.sidebar {
+    width: 220px;
+    background: linear-gradient(180deg, #00bfff 0%, #0073e6 100%);
+    color: white;
+    position: fixed;   /* Se queda fija al hacer scroll */
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.logo-sidebar {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+.logo-sidebar h2 {
+    margin: 0 0 5px 0;
+}
+
+.rol-usuario {
+    font-size: 0.85em;
+    opacity: 0.85;
+    margin: 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li a {
+    display: block;
+    padding: 13px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-size: 0.95em;
+}
+
+.menu li a:hover,
+.menu li a.active {
+    background: rgba(255,255,255,0.2);
+}
+
+/* El link de cerrar sesión en rojo suave */
+.menu a.logout {
+    color: #ffcccc;
+}
+
+/* =============================================
+   CONTENIDO PRINCIPAL
+   ============================================= */
+.content {
+    margin-left: 220px;   /* Deja espacio para el sidebar fijo */
+    padding: 25px;
+    flex: 1;
+}
+
+.header {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.4em;
+    color: #004080;
+}
+
+/* Tarjeta de sección */
+.section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    color: #004080;
+    margin-top: 0;
+}
+
+/* Grupos de campos en formularios del panel */
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #0073e6;
+    outline: none;
+}
+
+/* Botón principal */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #005bb5;
+}
+
+/* =============================================
+   RESPONSIVIDAD
+   ============================================= */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+}
