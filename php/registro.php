@@ -72,13 +72,9 @@ if (isset($_POST['registro'])) {
     <meta charset="UTF-8">
     <title>Registro - Congreso Internacional</title>
     <link rel="stylesheet" href="../css/Style.css">
-    <script>
-        // Muestra u oculta los campos según el tipo de usuario seleccionado
-        function mostrarCampos() {
-            var tipo = document.getElementById("tipo").value;
-            document.getElementById("campos-participante").style.display = (tipo === "participante") ? "block" : "none";
-            document.getElementById("campos-ponente").style.display     = (tipo === "ponente")      ? "block" : "none";
-        }
+    <!-- jQuery y validaciones del cliente -->
+    <script src="../jquery-4.0.0.js"></script>
+    <script src="../js/validaciones.js"></script>
         // Ejecutamos al cargar para mostrar el estado inicial
         window.onload = mostrarCampos;
     </script>
@@ -108,25 +104,25 @@ if (isset($_POST['registro'])) {
             <p class="error-msg"><?= $error ?></p>
         <?php endif; ?>
 
-        <!-- enctype necesario para subir archivos -->
-        <form method="post" action="registro.php" enctype="multipart/form-data">
+        <!-- onsubmit llama a validarRegistro() antes de enviar al servidor -->
+        <form method="post" action="registro.php" enctype="multipart/form-data" onsubmit="return validarRegistro()">
             <h2>Crear Cuenta</h2>
 
             <div class="input-group">
                 <label>Nombre completo</label>
-                <input type="text" name="nombre" required>
+                <input type="text" id="nombre" name="nombre" required>
             </div>
             <div class="input-group">
                 <label>Correo electrónico</label>
-                <input type="email" name="correo" required>
+                <input type="email" id="correo" name="correo" required>
             </div>
             <div class="input-group">
                 <label>Teléfono</label>
-                <input type="tel" name="telefono" required>
+                <input type="tel" id="telefono" name="telefono" required>
             </div>
             <div class="input-group">
                 <label>Contraseña</label>
-                <input type="password" name="contrasena" required>
+                <input type="password" id="contrasena" name="contrasena" required>
             </div>
 
             <div class="input-group">
@@ -141,7 +137,7 @@ if (isset($_POST['registro'])) {
             <div id="campos-participante">
                 <div class="input-group">
                     <label>Institución</label>
-                    <input type="text" name="institucion">
+                    <input type="text" id="institucion" name="institucion">
                 </div>
                 <div class="input-group">
                     <label>Tipo de asistencia</label>
@@ -156,15 +152,15 @@ if (isset($_POST['registro'])) {
             <div id="campos-ponente" style="display:none;">
                 <div class="input-group">
                     <label>Título de ponencia</label>
-                    <input type="text" name="titulo">
+                    <input type="text" id="titulo" name="titulo">
                 </div>
                 <div class="input-group">
                     <label>Resumen</label>
-                    <textarea name="resumen" rows="3"></textarea>
+                    <textarea id="resumen" name="resumen" rows="3"></textarea>
                 </div>
                 <div class="input-group">
                     <label>Área temática</label>
-                    <input type="text" name="area">
+                    <input type="text" id="area" name="area">
                 </div>
                 <div class="input-group">
                     <label>Tipo</label>

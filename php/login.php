@@ -46,6 +46,9 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="../css/Style.css">
 </head>
 <body>
+    <!-- jQuery y validaciones -->
+    <script src="../jquery-4.0.0.js"></script>
+    <script src="../js/validaciones.js"></script>
     <div class="formulario">
         <div class="logo-container">
             <h1>Congreso Internacional</h1>
@@ -56,7 +59,8 @@ if (isset($_POST['login'])) {
             <p class="error-msg"><?= $error ?></p>
         <?php endif; ?>
 
-        <form method="post" action="login.php">
+        <!-- onsubmit llama a validarLogin() antes de enviar; si retorna false, no se envía -->
+        <form method="post" action="login.php" onsubmit="return validarLogin()">
             <h2>Inicio de Sesion</h2>
 
             <div class="input-group">

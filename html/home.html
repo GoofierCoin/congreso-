@@ -22,11 +22,57 @@
         </nav>
     </header>
 
-    <!-- Banner principal -->
-    <section class="banner">
-        <h1>Congreso Internacional 2026</h1>
-        <p>Fechas: 20 - 22 de Junio &nbsp;|&nbsp; Sede: Torreón, Coahuila</p>
-        <a href="../php/registro.php" class="btn-banner">Regístrate aquí</a>
+    <!--SLIDER / CARRUSEL
+         NOTA: Usamos jQuery para animar las diapositivas.
+         Cada slide tiene una imagen de fondo y texto encima.
+         El carrusel avanza automáticamente cada 4 segundos
+         y también tiene botones de anterior/siguiente.-->
+    <section class="slider-container">
+
+        <!-- Contenedor de slides -->
+        <div class="slider">
+
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <img src="../img/senado-de-la-republica-sesion-180320201.jpg" alt="Congreso Internacional 2026">
+                <div class="slide-texto">
+                    <h2>Congreso Internacional 2026</h2>
+                    <p>20 - 22 de Junio | Torreón, Coahuila</p>
+                    <a href="../php/registro.php" class="btn-banner">Regístrate aquí</a>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="../img/Ponencia.jpg" alt="Ponencias y Memorias">
+                <div class="slide-texto">
+                    <h2>Ponencias y Memorias</h2>
+                    <p>Comparte tu investigación con la comunidad académica</p>
+                    <a href="../php/ponencias.php" class="btn-banner">Ver Ponencias</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="../img/cuadrantes-inscripciones-2048x895.jpg" alt="Inscripciones abiertas">
+                <div class="slide-texto">
+                    <h2>Inscripciones Abiertas</h2>
+                    <p>Ponentes: $800 MXN &nbsp;|&nbsp; Participantes: $500 MXN</p>
+                    <a href="pagos.html" class="btn-banner">Ver Pagos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de navegación del slider -->
+        <button class="slider-btn prev" id="btnPrev">&#10094;</button>
+        <button class="slider-btn next" id="btnNext">&#10095;</button>
+
+        <!-- Puntos indicadores de posición -->
+        <div class="slider-dots">
+            <span class="dot activo" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
     </section>
 
     <!-- Información general -->
@@ -48,7 +94,71 @@
     </section>
 
     <footer>
-        <p>© 2026 Congreso Internacional</p>
+        <p>© 2026 Congreso Internacional &nbsp;|&nbsp; <span id="reloj"></span></p>
     </footer>
+
+    <!-- jQuery (archivo local) -->
+    <script src="../jquery-4.0.0.js"></script>
+
+    <!-- JS libre: reloj en tiempo real -->
+    <script src="../js/extras.js"></script>
+
+    <script>
+        // ============================================
+        // LÓGICA DEL SLIDER con jQuery
+        // ============================================
+        // NOTA: jQuery simplifica la manipulación del DOM.
+        // $(selector) selecciona elementos, .hide()/.show() los oculta/muestra,
+        // .addClass()/.removeClass() maneja clases CSS.
+
+        var totalSlides = $(".slide").length; // Contamos cuántos slides hay
+        var actual = 0;                        // Índice del slide actual
+
+        // Función principal: muestra el slide del índice indicado
+        function irASlide(indice) {
+            // Ocultamos todos los slides y quitamos la clase activa
+            $(".slide").hide().removeClass("active");
+            $(".dot").removeClass("activo");
+
+            // Mostramos solo el slide del índice y marcamos su punto
+            $(".slide").eq(indice).show().addClass("active");
+            $(".dot").eq(indice).addClass("activo");
+
+            actual = indice; // Actualizamos el índice actual
+        }
+
+        // Botón SIGUIENTE: avanza al próximo slide (vuelve al inicio si llega al final)
+        $("#btnNext").click(function() {
+            var siguiente = (actual + 1) % totalSlides;
+            irASlide(siguiente);
+        });
+
+        // Botón ANTERIOR: retrocede al slide anterior
+        $("#btnPrev").click(function() {
+            var anterior = (actual - 1 + totalSlides) % totalSlides;
+            irASlide(anterior);
+        });
+
+        // Clic en los puntos: va directo al slide correspondiente
+        $(".dot").click(function() {
+            var indice = $(this).data("index"); // Leemos el atributo data-index
+            irASlide(indice);
+        });
+
+        // Avance automático cada 4 segundos
+        var autoplay = setInterval(function() {
+            var siguiente = (actual + 1) % totalSlides;
+            irASlide(siguiente);
+        }, 4000);
+
+        // Pausamos el autoplay si el usuario interactúa con los botones
+        $(".slider-btn, .dot").click(function() {
+            clearInterval(autoplay);
+        });
+
+        // Inicializamos mostrando solo el primer slide
+        $(".slide").hide();
+        $(".slide").eq(0).show();
+    </script>
 </body>
 </html>
